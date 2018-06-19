@@ -25,5 +25,28 @@ count++;
 if(count==k)result=root.val;
 traverse(root.right,k);
 }
-
 }
+
+
+//////traverse using iterator:
+////the class below using recuise to get every element in the tree.Using stack and while to traverse is the second way.
+class Solution {
+    List<Integer>list=new ArrayList();
+    Stack<TreeNode>s=new Stack();
+    TreeNode t=null;
+     public List<Integer> inorderTraversal(TreeNode root) {
+        t=root;
+        while(!s.isEmpty()||t!=null){
+            if(t!=null){
+               s.push(t);
+               t=t.left;
+            }
+            else{
+                t=s.pop();
+                list.add(t.val);
+                t=t.right;
+               
+            }
+        } 
+        return list;
+    }
