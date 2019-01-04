@@ -19,7 +19,7 @@ public class DepthFirstPath {
         return marked[v];
     }
     public Iterable<Integer>pathTo(int v){
-        if(hasPathTo(v))return null;
+        if(!hasPathTo(v))return null;
         Stack<Integer>path=new Stack<Integer>();
         for(int x=v;x!=s;x=edgeTo[v])path.push(x);
         path.push(s);
