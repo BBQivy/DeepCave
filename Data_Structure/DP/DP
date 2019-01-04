@@ -1,0 +1,27 @@
+public class Dp {
+   public int fibonacci(int n){
+       if(n==1||n==2)return 1;
+       int res=fibonacci(n-1)+fibonacci(n-2);
+       return res;
+   }
+   public int fibonacciArray(int n){
+       if(n==1||n==2)return 1;
+       int[]a=new int[n+1];
+       if(a[n]!=0)return a[n];
+       else {
+           int res=fibonacciArray(n-1)+fibonacciArray(n-2);
+           a[n]=res;
+           return res;
+       }
+   }
+   public int Array(int n){
+       if(n==1||n==2)return 1;
+       int[]a=new int[n+1];
+       a[1]=1;
+       a[2]=1;
+       for(int i=3;i<=n;i++){
+           a[i]=a[i-1]+a[i-2];
+       }
+       return a[n];
+   }
+}
