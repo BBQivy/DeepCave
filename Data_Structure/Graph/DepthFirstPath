@@ -1,0 +1,28 @@
+public class DepthFirstPath {
+    private boolean[]marked;
+    private int[]edgeTo;
+    private int s;
+    public DepthFirstPath(AdjacencyListGraph graph,int source){
+        s=source;
+        dfs(graph,source);
+    }
+    private void dfs(AdjacencyListGraph graph,int source){
+        marked[source]=true;
+        for(int w:graph.adj(source)){
+            if(!marked[w]){
+                dfs(graph,w);
+                edgeTo[w]=source;
+            }
+        }
+    }
+    public boolean hasPathTo(int v){
+        return marked[v];
+    }
+    public Iterable<Integer>pathTo(int v){
+        if(hasPathTo(v))return null;
+        Stack<Integer>path=new Stack<Integer>();
+        for(int x=v;x!=s;x=edgeTo[v])path.push(x);
+        path.push(s);
+        return path;
+    }
+}
