@@ -1,0 +1,18 @@
+public class AdjacencyListGraph {
+    private final int V;
+    private Bag<Integer>[] adj;
+    
+    public AdjacencyListGraph(int V) {
+        this.V = V;
+        this.adj = (Bag<Integer>[]) new Bag[V];
+        for(int v=0;v<V;v++)adj[v]=new Bag<Integer>();
+    }
+    public void addEdge(int w,int v){
+        adj[w].add(v);
+        adj[v].add(w);
+    }
+
+    public Iterable<Integer>adj(int v){
+        return adj[v];
+    }
+}
